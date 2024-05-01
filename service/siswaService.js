@@ -38,7 +38,7 @@ const siswaLogin = async (body) => {
       password : body.password,
   }
    
-  const acces_token_siswa = jwt.sign(payload,process.env.TOKEN_SECRET_SISWA,{expiresIn : "2d"})
+  const acces_token_siswa = jwt.sign(payload,"ini signature",{expiresIn : "2d"})
   const refresh_token_siswa = jwt.sign(payload,process.env.REFRESH_TOKEN_SECRET_SISWA,{expiresIn : "60d"})
 
   return {acces_token_siswa,refresh_token_siswa}

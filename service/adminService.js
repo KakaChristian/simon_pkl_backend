@@ -39,7 +39,7 @@ const adminLogin = async (body) => {
         password : body.password,
     }
      
-    const acces_token_admin = jwt.sign(payload,process.env.TOKEN_SECRET_ADMIN,{expiresIn : "2d"})
+    const acces_token_admin = jwt.sign(payload,"admin signature",{expiresIn : "2d"})
     const refresh_token_admin = jwt.sign(payload,process.env.REFRESH_TOKEN_SECRET_ADMIN,{expiresIn : "60d"})
   
     return {acces_token_admin,refresh_token_admin}

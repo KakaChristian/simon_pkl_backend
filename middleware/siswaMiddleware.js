@@ -3,7 +3,8 @@ import { db } from "../config/prismaClient.js"
 
 export const siswaMiddleware = async (req,res,next) => {
     const tokenHeader = req.get("Authorization")
-    console.log("tes guys");
+    console.log(tokenHeader);
+
     const token = tokenHeader && tokenHeader.split(' ')[1]
 
     if(!token){
@@ -12,8 +13,9 @@ export const siswaMiddleware = async (req,res,next) => {
 
     console.log("hghghgh");
     
-    const siswa = await jwt.verify(token,process.env.TOKEN_SECRET_SISWA,(err,siswa) => {
+    const siswa = await jwt.verify(token,"ini signature",(err,siswa) => {
         if(err){
+            console.log(err);
             return {
                 status : 401,
                 msg : err.message
